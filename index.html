@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dayo — Kasama Mo Araw-Araw</title>
+<title>Inday.AI — Para sa mga Nanay</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   /* ===== FLOATING AI CHAT ===== */
@@ -611,8 +611,8 @@
 
   <div class="gate-inner">
     <div class="gate-lock-ring">🔒</div>
-    <div class="gate-logo">Da<span>yo</span></div>
-    <div class="gate-tagline">Para sa mga piling tao lang ito.<br>Ikaw ba 'yan? 😏</div>
+    <div class="gate-logo">In<span>day</span>.AI</div>
+    <div class="gate-tagline">Para sa mga piling kaibigan lang muna.<br>Ikaw ba 'yan? 😊</div>
 
     <div class="gate-label">Access Code</div>
     <div class="gate-input-wrap">
@@ -633,7 +633,7 @@
   </div>
 
   <div class="gate-footer">
-    Demo build • <span>Dayo by Tumbletech</span> • 2026
+    Demo build • <span>Inday.AI by Tumbletech</span> • 2026
   </div>
 </div>
 
@@ -647,7 +647,7 @@
 
   <!-- HEADER -->
   <header>
-    <div class="logo">Da<span>yo</span></div>
+    <div class="logo">In<span>day</span>.AI</div>
     <div class="header-right">
       <div class="notif-btn" onclick="alert('Walang bagong notif, nandito ka naman! 😄')">
         🔔
@@ -888,7 +888,7 @@
 </div>
 
 <!-- CHAT FAB -->
-<button id="chat-fab" onclick="toggleChat()" title="Kausapin si Dayo">
+<button id="chat-fab" onclick="toggleChat()" title="Kausapin si Inday">
   ✨
   <div class="chat-fab-badge" id="chatBadge"></div>
 </button>
@@ -900,8 +900,8 @@
       <div class="chat-handle-bar"></div>
       <div class="chat-avatar">✨</div>
       <div class="chat-header-info">
-        <div class="chat-header-name">Dayo AI</div>
-        <div class="chat-status"><div class="status-dot"></div> Online — andito ako!</div>
+        <div class="chat-header-name">Inday AI</div>
+        <div class="chat-status"><div class="status-dot"></div> Online — Nandito si Inday!</div>
       </div>
       <button class="chat-close" onclick="toggleChat()">✕</button>
     </div>
@@ -909,10 +909,10 @@
     <div class="chat-messages" id="chatMessages"></div>
 
     <div class="quick-replies" id="quickReplies">
-      <div class="qr-chip" onclick="sendQuick('Kumusta na ako today?')">Kumusta ako? 😊</div>
-      <div class="qr-chip" onclick="sendQuick('Ano ang dapat kong gawin ngayon?')">Ano gagawin ko?</div>
-      <div class="qr-chip" onclick="sendQuick('Motivate mo naman ako!')">Motivate me! 🔥</div>
-      <div class="qr-chip" onclick="sendQuick('Anong kain ko ngayon?')">Anong kain? 🍚</div>
+      <div class="qr-chip" onclick="sendQuick('Ano ang magluluto ko ngayon para sa pamilya ko?')">Anong ulam? 🍚</div>
+      <div class="qr-chip" onclick="sendQuick('Tulungan mo akong mag-budget ng bahay ngayong buwan.')">Budget tips 💰</div>
+      <div class="qr-chip" onclick="sendQuick('Pagod na ako. Palakasin mo naman ako.')">Pagod na ako 😔</div>
+      <div class="qr-chip" onclick="sendQuick('Anong pwedeng gawin ng mga bata ngayong wala sa school?')">Bata activities 👧</div>
     </div>
 
     <div class="chat-input-bar">
@@ -1053,24 +1053,26 @@
   let chatHistory = [];
   let currentUserName = 'ka';
 
-  const SYSTEM_PROMPT = `Ikaw si Dayo — isang personal AI assistant na parang best friend. Nagsasalita ka ng Taglish (halo ng Tagalog at English) na natural at casual. 
+  const SYSTEM_PROMPT = `Ikaw si Inday — isang personal AI assistant na parang pinagkakatiwalaang kumare at kaibigan. Nagsasalita ka ng Taglish (halo ng Tagalog at English) na natural, mainit, at pamilyar.
 
 Personality mo:
-- Warm, encouraging, genuine — hindi plastic
-- May sense of humor pero hindi OA
-- Practical ang advice — hindi lang pep talk
-- Short to medium ang replies — hindi essay ang sagot
-- Gumagamit ng mga emoji occasionally pero hindi OA
-- Kilala mo ang user bilang isang busy, matalino, goal-oriented na tao
+- Warm, maalalahanin, at encouraging — parang ate o kumare na laging nandoon
+- May sense of humor na relatable — hindi OA, hindi plastic
+- Practical ang advice — luto, budget, pamilya, kalusugan, lahat
+- Short to medium ang replies — kausap ka, hindi nagbabasa
+- Gumagamit ng emoji occasionally — natural lang
+- Razpeto sa mga nanay at asawa — gets mo ang bigat ng pag-aalaga ng tahanan
 
-Context ng app: Ikaw ang floating AI assistant ng Dayo — isang lifestyle companion app para sa mga Pilipino. Tumutulong ka sa health tracking, reminders, planning, at general life questions.
+Context: Ikaw ang AI assistant ng Inday.AI — isang lifestyle companion app para sa mga Pilipinong nanay at housewives. Tumutulong ka sa meal planning, pamilya scheduling, household budgeting, health reminders, at kahit anong tanong sa buhay.
+
+Sino ang kausap mo: Mga busy na Pilipinong nanay at housewife. Nag-aalaga sila ng pamilya, nagba-budget, nagluluto, nagpapalaki ng anak — sila ang unsung heroes ng bawat tahanan.
 
 Rules:
-- Laging Taglish ang sagot — natural na pagsasalit ng dalawang wika
-- Keep it conversational at friendly
-- Be direct — walang paligoy-ligoy
-- If may health/medical question, mag-advise pero i-remind na kumonsulta sa doktor
-- Max 3-4 sentences lang usually, maliban kung kailangan ng mas mahabang explanation`;
+- Laging Taglish — natural na pagsasalit, hindi forced
+- Maging practical at actionable — hindi lang supportive words
+- If may health/medical, mag-advise pero i-remind na kumonsulta sa doktor
+- I-address siya by first name pag may pagkakataon — feels more personal
+- Max 3-4 sentences usually, maliban kung kailangan talaga ng mas mahabang sagot`;
 
   function toggleChat() {
     chatOpen = !chatOpen;
@@ -1188,11 +1190,11 @@ Rules:
   // ===== GATE =====
   // Add or edit codes here — one per friend
   const VALID_CODES = {
-    'DAYO-ALPHA':  'Alpha',
-    'DAYO-BRAVO':  'Bravo',
-    'DAYO-CHARLIE':'Charlie',
-    'DAYO-DELTA':  'Delta',
-    'DAYO-ECHO':   'Echo',
+    'INDAY-JENNIFER':  'Jennifer',
+    'INDAY-DONNABEL':  'Donnabel',
+    'INDAY-LEIZELYN':  'Leizelyn',
+    'INDAY-MADEL':     'Madel',
+    'INDAY-BENNY':     'Benny',
   };
 
   let eyeVisible = false;
