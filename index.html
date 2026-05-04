@@ -1151,21 +1151,20 @@ Rules:
     document.getElementById('chatSend').disabled = true;
     showTyping();
 
-    try {
-      const res = await fetch('https://api.anthropic.com/v1/messages', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
-          max_tokens: 1000,
-          system: SYSTEM_PROMPT,
-          messages: chatHistory.filter(m => m.role !== 'system').slice(-12)
-        })
-      });
-      const data = await res.json();
-      hideTyping();
-      const reply = data.content?.[0]?.text || 'Sorry, may error. Try ulit! 😅';
-      addMessage('ai', reply);
+    try const res = await fetch('/api/chat', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+  			system: SYSTEM_PROMPT,
+  			messages: chatHistory.slice(-12)
+			})
+		});
+
+		const data = await res.json();
+		hideTyping();
+
+		const reply = data.reply || 'Sorry, may error. Try ulit! 😅';
+		addMessage('ai', reply);
     } catch (e) {
       hideTyping();
       addMessage('ai', 'Ay, may problema sa connection. Check mo nga internet mo, then try ulit! 😅');
