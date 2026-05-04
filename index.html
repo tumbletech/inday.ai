@@ -1151,20 +1151,22 @@ Rules:
     document.getElementById('chatSend').disabled = true;
     showTyping();
 
-    try const res = await fetch('/api/chat', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({
-  			system: SYSTEM_PROMPT,
-  			messages: chatHistory.slice(-12)
-			})
-		});
+    try {
+		const res = await fetch('/api/chat', {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({
+    		system: SYSTEM_PROMPT,
+    		messages: chatHistory.slice(-12)
+		})
+	});
 
-		const data = await res.json();
-		hideTyping();
+	const data = await res.json();
+	hideTyping();
 
-		const reply = data.reply || 'Sorry, may error. Try ulit! 😅';
-		addMessage('ai', reply);
+	const reply = data.reply || 'Sorry, may error. Try ulit! 😅';
+	addMessage('ai', reply);
+} catch (e) {
     } catch (e) {
       hideTyping();
       addMessage('ai', 'Ay, may problema sa connection. Check mo nga internet mo, then try ulit! 😅');
