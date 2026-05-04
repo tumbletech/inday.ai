@@ -745,7 +745,7 @@
       <div class="bar-row">
         <div class="bar-label">Tulog</div>
         <div class="bar-track">
-          <div class="bar-fill" style="width: 81%; background: linear-gradient(90deg, var(--sage), var(--sage-light));"></div>
+          <div class="bar-fill" style="width: 81%; background: linear-gradient(90deg, var(--sage), var(--sage));"></div>
         </div>
         <div class="bar-val">6.5h</div>
       </div>
@@ -1140,7 +1140,8 @@ Rules:
     const text = input.value.trim();
     if (!text || isTyping) return;
 
-    input.value = ''; autoResize(input);
+    input.value = '';
+    autoResize(input);
     addMessage('user', text);
     chatHistory.push({ role: 'user', content: text });
 
@@ -1152,23 +1153,29 @@ Rules:
     showTyping();
 
     try {
-		const res = await fetch('/api/chat', {
-		method: 'POST',
-		headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify({
-    		system: SYSTEM_PROMPT,
-    		messages: chatHistory.slice(-12)
-		})
-	});
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          system: SYSTEM_PROMPT,
+          messages: chatHistory.slice(-12)
+        })
+      });
 
-	const data = await res.json();
-	hideTyping();
+      const data = await res.json();
+      hideTyping();
 
-	const reply = data.reply || 'Sorry, may error. Try ulit! 😅';
-	addMessage('ai', reply);
-} catch (e) {
+      if (!res.ok) {
+        console.error(data);
+        addMessage('ai', data.error || 'Sorry, may API error. Try ulit! 😅');
+        return;
+      }
+
+      const reply = data.reply || 'Sorry, may error. Try ulit! 😅';
+      addMessage('ai', reply);
     } catch (e) {
       hideTyping();
+      console.error(e);
       addMessage('ai', 'Ay, may problema sa connection. Check mo nga internet mo, then try ulit! 😅');
     } finally {
       isTyping = false;
